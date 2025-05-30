@@ -46,7 +46,7 @@ A secure, configurable REST API plugin for [Grav CMS](https://getgrav.org), enab
 1. **Download or Clone:**
 
 ```bash
-git clone https://github.com/yourusername/binapi.git
+git clone https://github.com/Noosan1/binapi//binapi.git
 ```
 
 2. **Move to Plugins Folder:**
