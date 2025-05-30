@@ -1,3 +1,5 @@
+---
+
 # binapi Grav Plugin
 
 A secure, configurable REST API plugin for [Grav CMS](https://getgrav.org), enabling automated article and image creation via authenticated endpoints. Ideal for workflow automation and integration with tools like n8n.
@@ -12,8 +14,8 @@ A secure, configurable REST API plugin for [Grav CMS](https://getgrav.org), enab
 - [Configuration](#configuration)
 - [Authentication](#authentication)
 - [Usage](#usage)
-  - [Create Article Endpoint](#create-article-endpoint)
-  - [Upload Image Endpoint](#upload-image-endpoint)
+    - [Create Article Endpoint](#create-article-endpoint)
+    - [Upload Image Endpoint](#upload-image-endpoint)
 - [Integration Example: n8n](#integration-example-n8n)
 - [Security Notes](#security-notes)
 - [Contributing](#contributing)
@@ -43,18 +45,20 @@ A secure, configurable REST API plugin for [Grav CMS](https://getgrav.org), enab
 
 1. **Download or Clone:**
 
+```bash
 git clone https://github.com/yourusername/binapi.git
+```
 
 2. **Move to Plugins Folder:**
 Place the `binapi` directory into your site's `user/plugins/` directory.
-
 3. **Enable the Plugin:**
-- Via Admin Panel: Go to Plugins > binapi > Enable.
-- Or in `user/config/plugins/binapi.yaml`:
+    - Via Admin Panel: Go to Plugins > binapi > Enable.
+    - Or in `user/config/plugins/binapi.yaml`:
 
-  ```
-  enabled: true
-  ```
+```yaml
+enabled: true
+```
+
 
 ---
 
@@ -62,19 +66,21 @@ Place the `binapi` directory into your site's `user/plugins/` directory.
 
 All plugin settings are available via the Admin Panel or by editing `user/config/plugins/binapi.yaml` directly:
 
+```yaml
 enabled: true
 require_auth: true
 api_token: 'your_secure_token_here'
-default_folder: 'blog'
+default_folder: '02.blog'
 allow_folder_creation: true
 allow_article_creation: true
 allow_image_upload: true
+```
 
 **Key Options:**
 
 - `require_auth`: Enforces authentication for all API requests.
 - `api_token`: Bearer token for API authentication.
-- `default_folder`: Default folder for new articles/images.
+- `default_folder`: Default folder for new articles/images (e.g., `02.blog`).
 - `allow_folder_creation`: Allow API to create new folders if they don't exist.
 - `allow_article_creation`: Allow API to create new articles.
 - `allow_image_upload`: Allow API to upload images.
@@ -86,15 +92,15 @@ allow_image_upload: true
 binapi supports two authentication methods:
 
 1. **Bearer Token (Recommended for API):**
-   - Set `require_auth: true` and provide a strong `api_token`.
-   - All API requests must include:
-   - 
-     ```
-     Authorization: Bearer your_secure_token_here
-     ```
+    - Set `require_auth: true` and provide a strong `api_token`.
+    - All API requests must include:
+
+```
+Authorization: Bearer your_secure_token_here
+```
 
 2. **Grav Session (Browser/Logged-in User):**
-   - If authenticated via the Grav Login plugin, requests are allowed.
+    - If authenticated via the Grav Login plugin, requests are allowed.
 
 ---
 
@@ -104,54 +110,62 @@ binapi supports two authentication methods:
 
 - **URL:** `/binapi/create-article`
 - **Method:** `POST`
-- **Headers:**  
-  `Authorization: Bearer your_secure_token_here` (if `require_auth` is enabled)
+- **Headers:**
+`Authorization: Bearer your_secure_token_here` (if `require_auth` is enabled)
 - **Body (JSON):**
-  
 
+```json
 {
-"folder": "blog",
-"filename": "item.md",
-"content": "---\ntitle: "My Title"\n---\nContent goes here.",
-"title": "My Title"
+  "folder": "02.blog",
+  "filename": "item.md",
+  "content": "---\ntitle: \"My Title\"\n---\nContent goes here.",
+  "title": "My Title"
 }
+```
 
 - **Response:**
 
+```json
 { "success": true, "message": "Article created" }
+```
+
 
 ### Upload Image Endpoint
 
 - **URL:** `/binapi/upload-image`
 - **Method:** `POST`
-- **Headers:**  
+- **Headers:**
 `Authorization: Bearer your_secure_token_here` (if `require_auth` is enabled)
 - **Body (JSON):**
 
+```json
 {
-"folder": "blog",
-"filename": "image.png",
-"image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgA..."
+  "folder": "02.blog",
+  "filename": "image.png",
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgA..."
 }
+```
 
 - **Response:**
 
+```json
 { "success": true, "url": "/user/pages/02.blog/image.png" }
+```
+
 
 ---
 
 ## Integration Example: n8n
 
 1. **Create Credential:**
- - Type: HTTP Request (Header Auth)
- - Header Name: `Authorization`
- - Value: `Bearer your_secure_token_here`
-
+    - Type: HTTP Request (Header Auth)
+    - Header Name: `Authorization`
+    - Value: `Bearer your_secure_token_here`
 2. **HTTP Request Node Example:**
- - URL: `https://your-grav-site.com/binapi/create-article`
- - Method: `POST`
- - Authentication: Select your credential
- - Body Content Type: JSON
+    - URL: `https://your-grav-site.com/binapi/create-article`
+    - Method: `POST`
+    - Authentication: Select your credential
+    - Body Content Type: JSON
 
 ---
 
@@ -166,7 +180,7 @@ binapi supports two authentication methods:
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome!  
+Contributions, issues, and feature requests are welcome!
 Please open an issue or pull request on GitHub.
 
 ---
@@ -177,6 +191,4 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ---
 
-*Last updated: May 29, 2025*
-
-
+_Last updated: May 29, 2025_
