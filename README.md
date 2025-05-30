@@ -2,7 +2,7 @@
 
 # binapi Grav Plugin
 
-A secure, configurable REST API plugin for [Grav CMS](https://getgrav.org), enabling automated article and image creation via authenticated endpoints. Ideal for workflow automation and integration with tools like n8n.
+A secure, configurable REST API plugin for [Grav CMS](https://getgrav.org), enabling automated article and image creation via authenticated endpoints. Ideal for workflow automation and integration with tools like n8n or zapier.
 
 ---
 
