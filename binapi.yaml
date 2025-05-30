@@ -1,0 +1,16 @@
+enabled: true
+
+# Require authentication for API endpoints (session or token)
+require_auth: false
+
+# API token for Bearer authentication (leave blank to disable token auth)
+api_token: ''
+
+# Default folder where new articles/images are created or uploaded
+default_folder: '02.blog'
+
+# Allow creation of new folders via API
+allow_folder_creation: true
+
+# Allow creation of new articles via API
+allow_article_creation: true

@@ -1,0 +1,85 @@
+name: binapi
+version: 1.0.0
+description: 'Configuration for the binapi plugin'
+icon: plug
+author:
+  name: Johnny Larson
+  email: 
+  url: 
+homepage: 
+keywords: [grav, plugin, api, binapi]
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    require_auth:
+      type: toggle
+      label: Require Authentication
+      highlight: 0
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    api_token:
+      type: text
+      label: API Token (Secure Bearer Token)
+      size: medium
+      default: ''
+      validate:
+        type: string
+
+    default_folder:
+      type: text
+      label: Default Folder
+      size: medium
+      default: 'blog'
+      validate:
+        type: string
+
+    allow_folder_creation:
+      type: toggle
+      label: Allow Folder Creation
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    allow_article_creation:
+      type: toggle
+      label: Allow Article Creation
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
+
+    allow_image_upload:
+      type: toggle
+      label: Allow Image Upload
+      highlight: 1
+      default: 1
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
